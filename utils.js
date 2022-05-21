@@ -221,7 +221,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   //表情图像链接头补全
   tempHTML = tempHTML.replace(/src=\"\//g,'src="https:/');
   //格式处理
-  tempHTML = tempHTML.replace(/<span class="surl-text">(.*?)<\/span>/g,'$1'
+  tempHTML = tempHTML.replace(/<span class="surl-text">(.*?)<\/span>/g,'$1');
   tempHTML += "<br>";
   tempHTML = tempHTML.replace(/<\/p><\/div><br>/g,'</p></div>');
   
