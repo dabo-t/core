@@ -147,6 +147,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   tempHTML = tempHTML.replace(/<span class='url-icon'><img style='width: 1rem;height: 1rem' src='http(s)?:\/\/h5.sinaimg.cn\/upload\/2015\/09\/25\/3\/timeline_card_small_article_default.png'><\/span>/g, '<br>📄');
   //链接样式处理
   tempHTML = tempHTML.replace(/<a (.*?)>/g,'<a $1 style="color:#09f!important;text-decoration:none!important;">');
+  tempHTML = tempHTML.replace(/style="color:#09f!important;text-decoration:none!important; style="color:#09f!important;text-decoration:none!important;/g,'style="color:#09f!important;text-decoration:none!important;');
   tempHTML = tempHTML.replace(/<\/a>/g,' </a>');
   //问答图标处理
   tempHTML = tempHTML.replace(/<span class='url-icon'><img style='width: 1rem;height: 1rem' src='https:\/\/h5.sinaimg.cn\/upload\/2016\/11\/23\/433\/wenda_icon_default.png'><\/span>/g,'');
