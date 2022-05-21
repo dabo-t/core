@@ -150,7 +150,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   //链接样式处理
   tempHTML = tempHTML.replace(/<a (.*?)>/g,'<a $1 style="color:#09f!important;text-decoration:none!important;">');
   tempHTML = tempHTML.replace(/<\/a>/g,' </a>');
-
+  tempHTML = tempHTML.replace(/style="color:#09f!important;text-decoration:none!important;" style="color:#09f!important;text-decoration:none!important;"/g,'style="color:#09f!important;text-decoration:none!important;"');
  
   // 微博配图
   if (status.pics) {
