@@ -176,7 +176,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   let anyVideo = false;
   if (livePhotos) {
       livePhotos.forEach((livePhoto) => {
-          video += `<br><video controls="controls" poster="${(livePhoto.large && livePhoto.large.url) || livePhoto.url}" src="${livePhoto.videoSrc}" style="width: 100%"></video>`;
+          video += `<br><br><video controls="controls" poster="${(livePhoto.large && livePhoto.large.url) || livePhoto.url}" src="${livePhoto.videoSrc}" style="width: 100%"></video>`;
           anyVideo = true;
       });
   }
@@ -219,15 +219,14 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
       tempHTML += video;
   }
 
-  //图片评论2  
-  tempHTML = tempHTML.replace(/<a href="(.*?).jpg" data-hide="" style="color:#09f!important;text-decoration:none!important;"><br>(.*?)<\/a><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">/g,'<br><a href="$1.jpg" style="color:#09f!important;text-decoration:none!important;">查看图片 </a><br><img src="$1.jpg" referrerpolicy="no-referrer" width="800"><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">');
   //表情图像链接头补全
   tempHTML = tempHTML.replace(/src=\"\//g,'src="https:/');
   //格式处理
   tempHTML = tempHTML.replace(/<span class="surl-text">(.*?)<\/span>/g,'$1');
   tempHTML += "<br>";
   tempHTML = tempHTML.replace(/<\/p><\/div><br>/g,'</p></div>');
-
+  //图片评论2  
+  tempHTML = tempHTML.replace(/<a href="(.*?).jpg" data-hide="" style="color:#09f!important;text-decoration:none!important;"><br>(.*?)<\/a><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">/g,'<br><a href="$1.jpg" style="color:#09f!important;text-decoration:none!important;">查看图片 </a><br><img src="$1.jpg" referrerpolicy="no-referrer" width="800"><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">');
   return tempHTML;
 };
 
