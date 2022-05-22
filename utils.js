@@ -172,7 +172,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   //视频
   const pageInfo = status.page_info;
   const livePhotos = status.pics && status.pics.filter((pic) => pic.type === 'livephotos' && pic.videoSrc);
-  let video = '<br clear="both" /><div style="clear: both"></div>';
+  let video = '';
   let anyVideo = false;
   if (livePhotos) {
       livePhotos.forEach((livePhoto) => {
