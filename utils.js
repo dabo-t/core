@@ -124,6 +124,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   tempHTML = tempHTML.replace(/src='\/\//g,'src=\'https://');
   //视频图标处理
   tempHTML = tempHTML.replace(/<span class='url-icon'><img style='width: 1rem;height: 1rem' src='http(s)?:\/\/h5.sinaimg.cn\/upload\/2015\/09\/25\/3\/timeline_card_small_video_default.png'><\/span>/g,'<br>📹');
+  tempHTML = tempHTML.replace(/<span class='url-icon'><img style='width: 1rem;height: 1rem' src='https:\/\/h5.sinaimg.cn\/upload\/2015\/09\/25\/3\/timeline_card_small_movie_default.png'><\/span>/g,'🎬 ');
   //地点图标处理
   tempHTML = tempHTML.replace(/<span class='url-icon'><img style='width: 1rem;height: 1rem' src='http(s)?:\/\/h5.sinaimg.cn\/upload\/2015\/09\/25\/3\/timeline_card_small_location_default.png'><\/span>/g,'<br>📍');
   //购物车图标处理
