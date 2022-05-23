@@ -220,6 +220,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
           anyVideo = true;
       }
   }
+  video += '<br>';
   if (anyVideo) {
       tempHTML += video;
   }
