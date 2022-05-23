@@ -153,6 +153,8 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   tempHTML = tempHTML.replace(/<\/a>/g,' </a>');
   tempHTML = tempHTML.replace(/style="color:#09f!important;text-decoration:none!important;" style="color:#09f!important;text-decoration:none!important;"/g,'style="color:#09f!important;text-decoration:none!important;"');
  
+  tempHTML += "<br>";
+
   // 微博配图
   if (status.pics) {
     let photoArr = [];
@@ -164,7 +166,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
     } else {
       photoArr = [...status.pics];
     }
-      tempHTML += "<br>";
+//523      tempHTML += "<br>";
     photoArr.forEach(function (item) {
       tempHTML += "<br>";
       tempHTML += '<img src="' + (largePic ? item.large.url : item.url) + '" referrerpolicy="no-referrer" width=800">';
@@ -221,11 +223,13 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
       tempHTML += video;
   }
 
+  //视频换行处理 523
+  tempHTML = tempHTML.replace(/<br><br><br><video controls="controls"/g,'<br><br><video controls="controls"');
   //表情图像链接头补全
   tempHTML = tempHTML.replace(/src=\"\//g,'src="https:/');
   //格式处理
   tempHTML = tempHTML.replace(/<span class="surl-text">(.*?)<\/span>/g,'$1');
-  tempHTML += "<br>";
+//523  tempHTML += "<br>";
   tempHTML = tempHTML.replace(/<\/p><\/div><br>/g,'</p></div>');
   //图片评论2  
   tempHTML = tempHTML.replace(/<a href="(.*?).jpg" data-hide="" style="color:#09f!important;text-decoration:none!important;"><br>(.*?)<\/a><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">/g,'<br><a href="$1.jpg" style="color:#09f!important;text-decoration:none!important;">查看图片 </a><br><img src="$1.jpg" referrerpolicy="no-referrer" width="800"><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">');
