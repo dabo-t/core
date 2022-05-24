@@ -152,6 +152,8 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   tempHTML = tempHTML.replace(/<a (.*?)>/g,'<a $1 style="color:#09f!important;text-decoration:none!important;">');
   tempHTML = tempHTML.replace(/<\/a>/g,' </a>');
   tempHTML = tempHTML.replace(/style="color:#09f!important;text-decoration:none!important;" style="color:#09f!important;text-decoration:none!important;"/g,'style="color:#09f!important;text-decoration:none!important;"');
+  //图片评论2 
+  tempHTML = tempHTML.replace(/<a href="(.*?).jpg" data-hide="" style="color:#09f!important;text-decoration:none!important;"><br>\u67e5\u770b\u56fe\u7247 <\/a>/g,'<a href="$1.jpg" style="color:#09f!important;text-decoration:none!important;"> 查看图片 </a><br><br><img src="$1.jpg" referrerpolicy="no-referrer" width="400"><br><br>');
  
   tempHTML += "<br>";
 
@@ -231,8 +233,6 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   //格式处理
   tempHTML = tempHTML.replace(/<span class="surl-text">(.*?)<\/span>/g,'$1');
   tempHTML = tempHTML.replace(/<\/p><\/div><br>/g,'</p></div>');
-  //图片评论2  
-  tempHTML = tempHTML.replace(/<a href="(.*?).jpg" data-hide="" style="color:#09f!important;text-decoration:none!important;"><br>\u67e5\u770b\u56fe\u7247 <\/a>/g,'<a href="$1.jpg" style="color:#09f!important;text-decoration:none!important;"> 查看图片 </a><br><br><img src="$1.jpg" referrerpolicy="no-referrer" width="400"><br><br>')
   return tempHTML;
 };
 
