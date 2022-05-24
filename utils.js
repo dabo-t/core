@@ -115,7 +115,6 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
         '转发 <a href="https://weibo.com/' + status.retweeted_status.user.id + '" target="_blank">@' + status.retweeted_status.user.screen_name + '</a>: ' +
         exports.formatStatus(status.retweeted_status, largePic, emoji) + `<p>` + new Date(status.retweeted_status.created_at).toLocaleString() +
         '</p></div>';
-      tempHTML = tempHTML.replace(/<a href="(.*?).jpg" data-hide="" style="color:#09f!important;text-decoration:none!important;"><br>(.*?)<\/a><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">/g,'<br><a href="$1.jpg" style="color:#09f!important;text-decoration:none!important;">查看图片 </a><br><img src="$1.jpg" referrerpolicy="no-referrer" width="800"><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">');
       tempHTML = tempHTML.replace(/<br><video controls="controls"/g,'<br><br><video controls="controls"');
     }
   }
@@ -167,10 +166,9 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
     } else {
       photoArr = [...status.pics];
     }
-//523      tempHTML += "<br>";
     photoArr.forEach(function (item) {
       tempHTML += "<br>";
-      tempHTML += '<img src="' + (largePic ? item.large.url : item.url) + '" referrerpolicy="no-referrer" width=800">';
+      tempHTML += '<img src="' + (largePic ? item.large.url : item.url) + '" referrerpolicy="no-referrer" width="800">';
     });
   }
   
@@ -225,13 +223,13 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
       tempHTML += video;
   }
 
-  //视频换行处理 523
+  //视频换行处理
   tempHTML = tempHTML.replace(/<br><br><br><video controls="controls"/g,'<br><br><video controls="controls"');
+  tempHTML = tempHTML.replace(/.jpg" referrerpolicy="no-referrer" width="800"><br><br><video controls="controls"/g,'.jpg" referrerpolicy="no-referrer" width="800"><br><video controls="controls"');
   //表情图像链接头补全
   tempHTML = tempHTML.replace(/src=\"\//g,'src="https:/');
   //格式处理
   tempHTML = tempHTML.replace(/<span class="surl-text">(.*?)<\/span>/g,'$1');
-//523  tempHTML += "<br>";
   tempHTML = tempHTML.replace(/<\/p><\/div><br>/g,'</p></div>');
   //图片评论2  
   tempHTML = tempHTML.replace(/<a href="(.*?).jpg" data-hide="" style="color:#09f!important;text-decoration:none!important;"><br>(.*?)<\/a><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">/g,'<br><a href="$1.jpg" style="color:#09f!important;text-decoration:none!important;">查看图片 </a><br><img src="$1.jpg" referrerpolicy="no-referrer" width="800"><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">');
