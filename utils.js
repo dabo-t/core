@@ -116,8 +116,6 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
         exports.formatStatus(status.retweeted_status, largePic, emoji) + `<p>` + new Date(status.retweeted_status.created_at).toLocaleString() +
         '</p></div>';
       tempHTML = tempHTML.replace(/<br><video controls="controls"/g,'<br><br><video controls="controls"');
-      //图片评论2 
-      tempHTML = tempHTML.replace(/<a href="(.*?).jpg" data-hide="" style="color:#09f!important;text-decoration:none!important;"><br>(.*?)<\/a>/g,'<a href="$1.jpg" style="color:#09f!important;text-decoration:none!important;"> 查看图片 </a><br><br><img src="$1.jpg" referrerpolicy="no-referrer" width="400"><br><br>');
     }
   }
   
@@ -154,7 +152,8 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   tempHTML = tempHTML.replace(/<a (.*?)>/g,'<a $1 style="color:#09f!important;text-decoration:none!important;">');
   tempHTML = tempHTML.replace(/<\/a>/g,' </a>');
   tempHTML = tempHTML.replace(/style="color:#09f!important;text-decoration:none!important;" style="color:#09f!important;text-decoration:none!important;"/g,'style="color:#09f!important;text-decoration:none!important;"');
-  
+  //图片评论2 
+  tempHTML = tempHTML.replace(/<a href="(.*?).jpg" data-hide="" style="color:#09f!important;text-decoration:none!important;"><br>(.*?)<\/a>/g,'<a href="$1.jpg" style="color:#09f!important;text-decoration:none!important;"> 查看图片 </a><br><br><img src="$1.jpg" referrerpolicy="no-referrer" width="400"><br><br>');  
 
   tempHTML += "<br>";
 
