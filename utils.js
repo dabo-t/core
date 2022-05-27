@@ -147,11 +147,11 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   //问答图标处理
   tempHTML = tempHTML.replace(/<span class='url-icon'><img style='width: 1rem;height: 1rem' src='https:\/\/h5.sinaimg.cn\/upload\/2016\/11\/23\/433\/wenda_icon_default.png'><\/span>/g,'');
   //图片评论
-  tempHTML = tempHTML.replace(/<a  href="(.*?)" data-hide=""><br>(查看图片|评论配图)<\/a>/g,'<a href="$1"> 评论配图</a><br><br><img src="$1" referrerpolicy="no-referrer" width="400"><br><br>');
+  tempHTML = tempHTML.replace(/<a  href="(.*?)" data-hide=""><br><span class="surl-text">(查看图片|评论配图)<\/span><\/a>/g,'<a href="$1"> 评论配图 </a><br><br><img src="$1" referrerpolicy="no-referrer" width="400"><br><br>');
   //链接样式处理
-  //tempHTML = tempHTML.replace(/<a (.*?)>/g,'<a $1 style="color:#09f!important;text-decoration:none!important;">');
-  //tempHTML = tempHTML.replace(/<\/a>/g,' </a>');
-  //tempHTML = tempHTML.replace(/style="color:#09f!important;text-decoration:none!important;" style="color:#09f!important;text-decoration:none!important;"/g,'style="color:#09f!important;text-decoration:none!important;"'); 
+  tempHTML = tempHTML.replace(/<a (.*?)>/g,'<a $1 style="color:#09f!important;text-decoration:none!important;">');
+  tempHTML = tempHTML.replace(/<\/a>/g,' </a>');
+  tempHTML = tempHTML.replace(/style="color:#09f!important;text-decoration:none!important;" style="color:#09f!important;text-decoration:none!important;"/g,'style="color:#09f!important;text-decoration:none!important;"'); 
 
   tempHTML += "<br>";
 
@@ -224,13 +224,13 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   }
 
   //视频换行处理
-  //tempHTML = tempHTML.replace(/<br><br><br><video controls="controls"/g,'<br><br><video controls="controls"');
-  //tempHTML = tempHTML.replace(/.jpg" referrerpolicy="no-referrer" width="800"><br><br><video controls="controls"/g,'.jpg" referrerpolicy="no-referrer" width="800"><br><video controls="controls"');
+  tempHTML = tempHTML.replace(/<br><br><br><video controls="controls"/g,'<br><br><video controls="controls"');
+  tempHTML = tempHTML.replace(/.jpg" referrerpolicy="no-referrer" width="800"><br><br><video controls="controls"/g,'.jpg" referrerpolicy="no-referrer" width="800"><br><video controls="controls"');
   //表情图像链接头补全
-  //tempHTML = tempHTML.replace(/src=\"\//g,'src="https:/');
+  tempHTML = tempHTML.replace(/src=\"\//g,'src="https:/');
   //格式处理
-  //tempHTML = tempHTML.replace(/<span class="surl-text">(.*?)<\/span>/g,'$1');
-  //tempHTML = tempHTML.replace(/<\/p><\/div><br>/g,'</p></div>');
+  tempHTML = tempHTML.replace(/<span class="surl-text">(.*?)<\/span>/g,'$1');
+  tempHTML = tempHTML.replace(/<\/p><\/div><br>/g,'</p></div>');
   return tempHTML;
 };
 
