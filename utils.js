@@ -223,6 +223,8 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
       tempHTML += video;
   }
 
+  //换行
+  tempHTML = tempHTML.replace(/<br \/>/g,'<br>');
   //视频换行处理
   tempHTML = tempHTML.replace(/<br><br><br><video controls="controls"/g,'<br><br><video controls="controls"');
   //tempHTML = tempHTML.replace(/.jpg" referrerpolicy="no-referrer" width="800"><br><br><video controls="controls"/g,'.jpg" referrerpolicy="no-referrer" width="800"><br><video controls="controls"');
