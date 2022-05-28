@@ -175,7 +175,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   //视频
   const pageInfo = status.page_info;
   const livePhotos = status.pics && status.pics.filter((pic) => pic.type === 'livephotos' && pic.videoSrc);
-  let video = '<br>';
+  let video = '';
   let anyVideo = false;
   if (livePhotos) {
       livePhotos.forEach((livePhoto) => {
@@ -225,7 +225,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
 
   //视频换行处理
   tempHTML = tempHTML.replace(/<br><br><br><video controls="controls"/g,'<br><br><video controls="controls"');
-  tempHTML = tempHTML.replace(/.jpg" referrerpolicy="no-referrer" width="800"><br><br><video controls="controls"/g,'.jpg" referrerpolicy="no-referrer" width="800"><br><video controls="controls"');
+  //tempHTML = tempHTML.replace(/.jpg" referrerpolicy="no-referrer" width="800"><br><br><video controls="controls"/g,'.jpg" referrerpolicy="no-referrer" width="800"><br><video controls="controls"');
   //表情图像链接头补全
   tempHTML = tempHTML.replace(/src=\"\//g,'src="https:/');
   //格式处理
