@@ -169,7 +169,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
     }
     photoArr.forEach(function (item) {
       tempHTML += "<br>";
-      tempHTML += '<img src="' + (largePic ? item.large.url : item.url) + '" referrerpolicy="no-referrer" width="800">';
+      tempHTML += '<img src="https://images.weserv.nl/?url=' + (largePic ? item.large.url : item.url) + '" referrerpolicy="no-referrer" width="800">';
     });
   }
   
