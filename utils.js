@@ -234,7 +234,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   //格式处理
   tempHTML = tempHTML.replace(/<span class="surl-text">([\s\S]*?)<\/span>/g,'$1');
   tempHTML = tempHTML.replace(/<\/p><\/div><br>/g,'</p></div>');
-  tempHTML = tempHTML.replace(/<img src="https:\/\/images.weserv.nl\/\?url=https:\/\/zzx.sinaimg.cn\/largeb\//g,'<img src="https://zzx.sinaimg.cn/largeb/');
+  //tempHTML = tempHTML.replace(/<img src="https:\/\/images.weserv.nl\/\?url=https:\/\/zzx.sinaimg.cn\/largeb\//g,'<img src="https://zzx.sinaimg.cn/largeb/');
   return tempHTML;
 };
 
