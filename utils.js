@@ -147,7 +147,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   //问答图标处理
   tempHTML = tempHTML.replace(/<span class='url-icon'><img style='width: 1rem;height: 1rem' src='https:\/\/h5.sinaimg.cn\/upload\/2016\/11\/23\/433\/wenda_icon_default.png'><\/span>/g,'');
   //图片评论
-  tempHTML = tempHTML.replace(/<a  href="(.*?)" data-hide=""><br><span class="surl-text">(查看图片|评论配图)<\/span><\/a>/g,'<a href="$1"> 评论配图 </a><br><br><img src="https://images.weserv.nl/?url=$1" referrerpolicy="no-referrer" width="400">');
+  tempHTML = tempHTML.replace(/<a  href="(.*?)" data-hide=""><br><span class="surl-text">(查看图片|评论配图)<\/span><\/a>/g,'<a href="$1"> 评论配图 </a><br><br><img src="$1" referrerpolicy="no-referrer" width="400">');
   tempHTML = tempHTML.replace(/referrerpolicy="no-referrer" width="400"><br><br><div style="border-left: 3px solid gray; padding-left: 1em;">/g,'referrerpolicy="no-referrer" width="400"><br><div style="border-left: 3px solid gray; padding-left: 1em;">');
   //链接样式处理
   tempHTML = tempHTML.replace(/<a (.*?)>/g,'<a $1 style="color:#09f!important;text-decoration:none!important;">');
@@ -169,7 +169,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
     }
     photoArr.forEach(function (item) {
       tempHTML += "<br>";
-      tempHTML += '<img src="https://images.weserv.nl/?url=' + (largePic ? item.large.url : item.url) + '" referrerpolicy="no-referrer" width="800">';
+      tempHTML += '<img src="' + (largePic ? item.large.url : item.url) + '" referrerpolicy="no-referrer" width="800">';
     });
   }
   
