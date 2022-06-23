@@ -86,8 +86,6 @@ exports.revertRelativeDate = (html, timeZone = -serverOffset) => {
 // 生成每条微博的 HTML
 exports.formatStatus = (status, largePic = true, emoji = false) => {
   const { longTextContent, url_objects: URLObjects } = status.longText || {};
-  const pageInfo = status.page_info;
-  const livePhotos = status.pics && status.pics.filter((pic) => pic.type === 'livephotos' && pic.videoSrc);
   // 某些纯图片微博 status.text 的值为 null
   let tempHTML = (longTextContent ? longTextContent.replace(/\n/g, '<br>') : status.text) || "";
 
@@ -176,7 +174,8 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
   }
   
   //视频
-
+  const pageInfo = status.page_info;
+  const livePhotos = status.pics && status.pics.filter((pic) => pic.type === 'livephotos' && pic.videoSrc);
   let video = '';
   let anyVideo = false;
   if (livePhotos) {
