@@ -161,8 +161,7 @@ exports.formatStatus = (status, largePic = true, emoji = false) => {
     let photoArr = [];
     if (typeof status.pics === 'object' && !Array.isArray(status.pics)) {
       // ignore: type = 'livephotos'
-      photoArr = Object.values(status.pics)
-        .filter(pic => pic.type !== 'livephotos');
+      photoArr = Object.values(status.pics).filter(pic => pic.type !== 'livephotos');
       logger.info('live:', status.id);
     } else {
       photoArr = [...status.pics];
